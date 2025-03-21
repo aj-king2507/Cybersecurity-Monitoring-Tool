@@ -1,6 +1,6 @@
 # Cybersecurity Monitoring Tool
 
-![Cybersecurity Monitoring Tool](https://example.com/sticker.png)  
+![Cybersecurity Monitoring Tool]("monitoring tool.png")  
 *Protect, Monitor, Secure*
 
 ## Overview
