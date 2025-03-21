@@ -3,7 +3,10 @@
 <p align="center">
   <img src="https://th.bing.com/th/id/OSK.HEROZC41T1dwnXGKaHSJY4FhwsZ8ScDUkDNAS6EX1TMurac?rs=1&pid=ImgDetMain" alt="Cybersecurity Monitoring Tool">
 </p>  
-*Protect, Monitor, Secure*
+<p align="center">
+  <b>Protect, Monitor, Secure</b>
+</p>
+
 
 ## Overview
 The **Cybersecurity Monitoring Tool** is a Python-based application designed to process and analyze different types of system logs. The tool provides insights into authentication attempts, firewall activities, system warnings, network traffic, and web server access logs. It features a GUI interface for user-friendly log file selection and processing.
