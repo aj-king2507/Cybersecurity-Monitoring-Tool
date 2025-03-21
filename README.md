@@ -38,7 +38,7 @@ The **Cybersecurity Monitoring Tool** is a Python-based application designed to 
 
 ## The code explained in details.
 
-1. Importing Required Modules
+### 1. Importing Required Modules
    ```python
    import re  # Regular expressions for searching and extracting log data
    import tkinter as tk  # The core Tkinter module for GUI applications
@@ -46,16 +46,16 @@ The **Cybersecurity Monitoring Tool** is a Python-based application designed to 
    from collections import defaultdict  # Dictionary that provides default values when keys don't exist
    ```
 
-### Explanation:
-**re:** This module provides tools for pattern matching (searching for specific text patterns).
-**tkinter:** Python’s built-in module for creating GUI applications.
-**filedialog:** Allows users to select log files from their system.
-**scrolledtext:** A text box that supports scrolling (useful for large log files).
-**ttk:** A themed widget set that makes the GUI look modern.
-**messagebox:** Used to show pop-up messages (errors, alerts, etc.).
-**defaultdict:** Similar to a dictionary but initializes default values when keys are missing.
+#### Explanation:
+📌 **re:** This module provides tools for pattern matching (searching for specific text patterns).
+📌 **tkinter:** Python’s built-in module for creating GUI applications.
+📌 **filedialog:** Allows users to select log files from their system.
+📌 **scrolledtext:** A text box that supports scrolling (useful for large log files).
+📌 **ttk:** A themed widget set that makes the GUI look modern.
+📌 **messagebox:** Used to show pop-up messages (errors, alerts, etc.).
+📌 **defaultdict:** Similar to a dictionary but initializes default values when keys are missing.
 
-2. Creating a Base Log Processor
+### 2. Creating a Base Log Processor
 Why do we need this?
 Instead of writing separate functions for each log type, we create a base class that contains common functionality like reading a file. Other specific log processors (Auth, Firewall, etc.) will inherit from this base class.
 
@@ -85,16 +85,16 @@ class LogProcessor:
         """
         raise NotImplementedError("Subclasses must implement this method")
 ```
-### Explanation:
-**self.file_path:** Stores the path of the log file.
-**self.data:** Uses defaultdict(list) to store categorized log data.
-**read_log():** Reads the file and returns a list of log lines.
-**process():** This method must be overridden in subclasses. It raises an error if not implemented.
+#### Explanation:
+📌 **self.file_path:** Stores the path of the log file.
+📌 **self.data:** Uses defaultdict(list) to store categorized log data.
+📌 **read_log():** Reads the file and returns a list of log lines.
+📌 **process():** This method must be overridden in subclasses. It raises an error if not implemented.
 
-3. Creating Specific Log Processors
+### 3. Creating Specific Log Processors
 Now, let's define different log processors that inherit from LogProcessor. Each subclass analyzes a specific type of log.
 
-   1. Processing Authentication Logs (auth.log)
+   #### 1. Processing Authentication Logs (auth.log)
    ```python
    class AuthLogProcessor(LogProcessor):
       def process(self):
@@ -116,12 +116,13 @@ Now, let's define different log processors that inherit from LogProcessor. Each 
          
          return self.data  # Return the processed log data
    ```
-   ### Explanation:
+   ##### Explanation:
    - Searches for "Failed password" and "Accepted password".
    - Extracts the username and IP address.
    - Stores them under Failed Attempts and Successful Logins.
 
-   2. Processing System Logs (syslog)
+
+   #### 2. Processing System Logs (syslog)
    ```python
    class SysLogProcessor(LogProcessor):
       def process(self):
@@ -138,12 +139,12 @@ Now, let's define different log processors that inherit from LogProcessor. Each 
          
          return self.data  # Return the processed log data
    ```
-   ### Explantion:
+   ##### Explantion:
    - Looks for error messages in system logs.
    - Normalizes the text (converts to lowercase).
    - If a line contains keywords like "error" or "failed", it stores it under System Alerts.
 
-   3. Processing Firewall Logs (firewall.log)
+   #### 3. Processing Firewall Logs (firewall.log)
    ```python
    class FirewallLogProcessor(LogProcessor):
       def process(self):
@@ -160,11 +161,11 @@ Now, let's define different log processors that inherit from LogProcessor. Each 
          
          return self.data
    ```
-   ### Explanation:
+   ##### Explanation:
    - Looks for "UFW BLOCK" entries.
    - Extracts and stores IP addresses that were blocked.
 
-   4. Processing Web Server Logs (access.log)
+   #### 4. Processing Web Server Logs (access.log)
    ```python
    class WebServerLogProcessor(LogProcessor):
       def process(self):
@@ -180,13 +181,13 @@ Now, let's define different log processors that inherit from LogProcessor. Each 
          
          return self.data
    ```
-   ### Explanation:
+   ##### Explanation:
    Extracts:
    - IP address of the user.
    - Request type (GET/POST).
    - Page accessed.
 
-   5. Processing Network Logs
+   #### 5. Processing Network Logs
    ```python
    class NetworkLogProcessor(LogProcessor):
       def process(self):
@@ -202,17 +203,17 @@ Now, let's define different log processors that inherit from LogProcessor. Each 
          
          return self.data
    ```
-   ### Explanation:
+   ##### Explanation:
    Extracts:
    - Source IP address.
    - Destination IP address.
    - Protocol (TCP/UDP) .
    - Port Number.
 
-4. Creating the Log Analyzer GUI (LogGUI)
+### 4. Creating the Log Analyzer GUI (LogGUI)
 The GUI is built using Tkinter, which provides buttons, dropdown menus, and a text area for displaying results.
 
-   1. Initializing the GUI
+   #### 1. Initializing the GUI
    ```python
    class LogGUI:
       def __init__(self, root):
@@ -259,13 +260,13 @@ The GUI is built using Tkinter, which provides buttons, dropdown menus, and a te
          self.text_area = scrolledtext.ScrolledText(self.frame, height=15, width=70, wrap=tk.WORD, font=("Courier", 10))
          self.text_area.pack(pady=5, padx=5)
    ```
-   ### Key Features:
+   ##### Key Features:
    **Dropdown Menu (Combobox):** Allows users to select the log type.
    **File Selection Button (Browse Log File):** Opens a file dialog to select a log file.
    **Process Button (Process Log):** Processes the selected log file.
    **Scrollable Text Area (ScrolledText):** Displays the processed log data.
 
-   2. File Selection (browse_file)
+   #### 2. File Selection (browse_file)
    ```python
    def browse_file(self):
       """ 
@@ -277,12 +278,12 @@ The GUI is built using Tkinter, which provides buttons, dropdown menus, and a te
          self.file_path = file_path  # Store the selected file path
          self.process_log()  # Automatically process the file
    ```
-   ### What it does:
+   ##### What it does:
    - Opens a file dialog (askopenfilename).
    - Stores the file path (self.file_path).
    - Calls process_log() automatically after selection.
 
-   3. Processing the Log File (process_log)
+   #### 3. Processing the Log File (process_log)
    This is the core logic that determines the log type and processes the data.
    ```python
    def process_log(self):
@@ -349,14 +350,14 @@ The GUI is built using Tkinter, which provides buttons, dropdown menus, and a te
       except Exception as e:
          messagebox.showerror("Error", f"Failed to process log: {str(e)}")  # Show an error if processing fails
    ```
-   ### What it does:
+   ##### What it does:
    - Reads the first 5 lines of the file to automatically detect the log type.
    - Uses keyword matching to decide which log type it belongs to.
    - If the detected log type is different from the user's selection, it automatically switches.
    - Passes the file to the correct log processor and displays the results.
    - Handles exceptions and shows error messages to the user.
 
-   4. Displaying Processed Results (display_results)
+   #### 4. Displaying Processed Results (display_results)
    ```python
    def display_results(self, results):
       """ 
@@ -369,12 +370,12 @@ The GUI is built using Tkinter, which provides buttons, dropdown menus, and a te
          for value in values:
                self.text_area.insert(tk.END, f"  {value}\n")  # Insert log details
    ```
-   ### What it does:
+   ##### What it does:
    - Clears the text box.
    - Formats the results into readable sections.
    - Displays categorized log data.
 
-5. Running the GUI
+### 5. Running the GUI
 ```python
 if __name__ == "__main__":
     root = tk.Tk()  # Create the main window
