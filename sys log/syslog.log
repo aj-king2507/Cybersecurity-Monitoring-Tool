@@ -1,0 +1,20 @@
+Mar 20 12:34:56 server1 kernel: [ 1234.567890] CPU temperature high
+Mar 20 12:35:01 server1 sshd[1234]: Failed password for invalid user admin from 192.168.1.100 port 54321
+Mar 20 12:35:10 server1 sshd[1234]: Accepted password for user1 from 192.168.1.101 port 55555
+Mar 20 12:35:30 server1 systemd[1]: Starting Cleanup of Temporary Directories...
+Mar 20 12:35:45 server1 systemd[1]: Finished Cleanup of Temporary Directories.
+Mar 20 12:36:10 server1 cron[4567]: (root) CMD (/usr/bin/backup.sh)
+Mar 20 12:36:30 server1 kernel: [ 1235.678901] Firewall rule applied: BLOCK 192.168.1.102
+Mar 20 12:37:00 server1 nginx[7890]: 403 Forbidden - /admin.php from 203.0.113.50
+Mar 20 12:37:15 server1 kernel: [ 1236.789012] Disk usage warning: /dev/sda1 at 90%
+Mar 20 12:37:45 server1 systemd[1]: Stopped Apache HTTP Server.
+Mar 20 12:38:05 server1 systemd[1]: Started Apache HTTP Server.
+Mar 20 12:38:30 server1 auditd[2222]: User login: user2 from 192.168.1.103
+Mar 20 12:39:00 server1 sshd[3333]: Failed password for root from 203.0.113.10 port 2222
+Mar 20 12:39:25 server1 kernel: [ 1237.890123] Memory usage high: 85% used
+Mar 20 12:39:50 server1 systemd-logind[5555]: Session 10 logged out
+Mar 20 12:40:15 server1 dhclient[6789]: DHCP lease renewed, IP 192.168.1.104
+Mar 20 12:40:35 server1 systemd[1]: Failed to start Network Manager.
+Mar 20 12:41:00 server1 systemd[1]: Network Manager started successfully.
+Mar 20 12:41:20 server1 sshd[3456]: Connection closed by 192.168.1.105
+Mar 20 12:41:45 server1 kernel: [ 1238.901234] USB device disconnected
