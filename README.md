@@ -1,6 +1,6 @@
 # Cybersecurity Monitoring Tool
 
-![Cybersecurity Monitoring Tool]("https://th.bing.com/th/id/OSK.HEROZC41T1dwnXGKaHSJY4FhwsZ8ScDUkDNAS6EX1TMurac?rs=1&pid=ImgDetMain")   
+![Cybersecurity Monitoring Tool](https://th.bing.com/th/id/OSK.HEROZC41T1dwnXGKaHSJY4FhwsZ8ScDUkDNAS6EX1TMurac?rs=1&pid=ImgDetMain)   
 *Protect, Monitor, Secure*
 
 ## Overview
